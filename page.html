@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Personal Air Bubble</title>
+<style>
+  /* Qatar Airways inspired background */
+  html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    background: linear-gradient(135deg, #7A162B 20%, #A63747 50%, #F5F2F0 95%);
+    color: #3f1d22;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  main {
+    position: relative;
+    z-index: 1;
+    max-width: 860px;
+    margin: 40px auto 60px;
+    background: #fff;
+    border-radius: 14px;
+    padding: 48px;
+    box-shadow: 0 16px 32px rgba(122, 22, 43, 0.45);
+    color: #3f1d22;
+    overflow: visible;
+  }
+
+  /* Red bubbles container inside main */
+  .bubble-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: visible;
+  }
+
+  .bubble {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(166, 55, 71, 0.4);
+    box-shadow: 0 0 60px rgba(166, 55, 71, 0.6);
+    filter: blur(8px);
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+  }
+
+  /* Bubble sizes and animation */
+  .bubble1 {
+    width: 200px;
+    height: 200px;
+    top: 10%;
+    left: 15%;
+    animation-name: floatBubble1;
+    animation-duration: 10s;
+    animation-delay: 0s;
+  }
+  .bubble2 {
+    width: 120px;
+    height: 120px;
+    top: 40%;
+    left: 55%;
+    animation-name: floatBubble2;
+    animation-duration: 11s;
+    animation-delay: 2s;
+  }
+  .bubble3 {
+    width: 240px;
+    height: 240px;
+    top: 70%;
+    left: 25%;
+    animation-name: floatBubble3;
+    animation-duration: 12s;
+    animation-delay: 1s;
+  }
+  .bubble4 {
+    width: 150px;
+    height: 150px;
+    top: 30%;
+    right: 15%;
+    animation-name: floatBubble4;
+    animation-duration: 9s;
+    animation-delay: 3s;
+  }
+  .bubble5 {
+    width: 180px;
+    height: 180px;
+    top: 80%;
+    right: 20%;
+    animation-name: floatBubble5;
+    animation-duration: 13s;
+    animation-delay: 4s;
+  }
+  .bubble6 {
+    width: 110px;
+    height: 110px;
+    top: 55%;
+    right: 45%;
+    animation-name: floatBubble6;
+    animation-duration: 10s;
+    animation-delay: 5s;
+  }
+  .bubble7 {
+    width: 220px;
+    height: 220px;
+    top: 15%;
+    left: 45%;
+    animation-name: floatBubble7;
+    animation-duration: 12s;
+    animation-delay: 0s;
+  }
+  .bubble8 {
+    width: 160px;
+    height: 160px;
+    top: 85%;
+    left: 50%;
+    animation-name: floatBubble8;
+    animation-duration: 14s;
+    animation-delay: 6s;
+  }
+
+  /* Floating animations moving bubbles randomly in X and Y */
+  @keyframes floatBubble1 {
+    0%, 100% {transform: translate(0, 0);}
+    25% {transform: translate(30px, -20px);}
+    50% {transform: translate(-15px, 25px);}
+    75% {transform: translate(-25px, -15px);}
+  }
+  @keyframes floatBubble2 {
+    0%, 100% {transform: translate(0, 0);}
+    20% {transform: translate(-20px, 25px);}
+    50% {transform: translate(20px, -20px);}
+    80% {transform: translate(-15px, 10px);}
+  }
+  @keyframes floatBubble3 {
+    0%, 100% {transform: translate(0, 0);}
+    30% {transform: translate(35px, 35px);}
+    60% {transform: translate(-35px, -20px);}
+    90% {transform: translate(15px, 15px);}
+  }
+  @keyframes floatBubble4 {
+    0%, 100% {transform: translate(0, 0);}
+    25% {transform: translate(-30px, 15px);}
+    50% {transform: translate(20px, -25px);}
+    75% {transform: translate(-20px, 20px);}
+  }
+  @keyframes floatBubble5 {
+    0%, 100% {transform: translate(0, 0);}
+    20% {transform: translate(25px, 25px);}
+    50% {transform: translate(-35px, -35px);}
+    80% {transform: translate(15px, -15px);}
+  }
+  @keyframes floatBubble6 {
+    0%, 100% {transform: translate(0, 0);}
+    25% {transform: translate(-15px, 25px);}
+    50% {transform: translate(35px, -20px);}
+    75% {transform: translate(-25px, 15px);}
+  }
+  @keyframes floatBubble7 {
+    0%, 100% {transform: translate(0, 0);}
+    30% {transform: translate(30px, -30px);}
+    60% {transform: translate(-20px, 25px);}
+    90% {transform: translate(15px, -15px);}
+  }
+  @keyframes floatBubble8 {
+    0%, 100% {transform: translate(0, 0);}
+    20% {transform: translate(-25px, 25px);}
+    50% {transform: translate(30px, -30px);}
+    80% {transform: translate(-15px, 15px);}
+  }
+
+  h1 {
+    font-family: "Georgia", serif;
+    text-align: center;
+    font-weight: 700;
+    color: #7A162B;
+    font-size: 3rem;
+    margin-bottom: 1.2rem;
+    letter-spacing: 1.6px;
+    position: relative;
+    z-index: 1;
+  }
+
+  h2 {
+    font-family: "Arial Black", sans-serif;
+    font-weight: 900;
+    font-size: 2rem;
+    margin-top: 3rem;
+    margin-bottom: 1.3rem;
+    color: #a63747;
+    border-bottom: 4px solid #7A162B;
+    padding-bottom: 0.45rem;
+    letter-spacing: 0.5px;
+    position: relative;
+    z-index: 1;
+  }
+
+  p {
+    font-size: 1.16rem;
+    line-height: 1.62;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  ol, ul {
+    margin-left: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1.15rem;
+    line-height: 1.54;
+    position: relative;
+    z-index: 1;
+  }
+
+  li {
+    margin-bottom: 0.85rem;
+  }
+
+  strong {
+    color: #7A162B;
+  }
+
+  .highlight-bubble {
+    background-color: #fce8e6;
+    color: #7A162B;
+    font-weight: 700;
+    border-radius: 4px;
+    padding: 0 6px 2px 6px;
+    box-decoration-break: clone;
+  }
+
+  h2::before {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+    background: radial-gradient(circle, #a63747 40%, transparent 90%);
+    border-radius: 50%;
+    box-shadow: 
+      12px 5px 0px #d35959, 
+      -12px 6px 0px #a63747;
+    position: relative;
+    z-index: 1;
+  }
+
+  @media (max-width: 700px) {
+    main {
+      padding: 32px 28px 32px 28px;
+      margin: 20px 18px 40px;
+    }
+    h1 {
+      font-size: 2.4rem;
+    }
+    h2 {
+      font-size: 1.6rem;
+      border-bottom-width: 3px;
+      margin-top: 2.2rem;
+      margin-bottom: 1rem;
+    }
+    p, li {
+      font-size: 1rem;
+    }
+  }
+</style>
+</head>
+<body>
+  <main role="main" aria-label="Personal Air Bubble Scientific Project Explanation">
+    <div class="bubble-container" aria-hidden="true">
+      <div class="bubble bubble1"></div>
+      <div class="bubble bubble2"></div>
+      <div class="bubble bubble3"></div>
+      <div class="bubble bubble4"></div>
+      <div class="bubble bubble5"></div>
+      <div class="bubble bubble6"></div>
+      <div class="bubble bubble7"></div>
+      <div class="bubble bubble8"></div>
+    </div>
+
+    <h1>Personal Air Bubble</h1>
+<img src="WhatsApp Image 2025-05-14 at 8.19.31 PM.jpeg" alt="Personal air bubble" style="display: block; margin-left: auto; margin-right: auto; max-width: 50%; border-radius: 12px;">
+
+    <h2>Introduction: The Problem of Air Pollution</h2>
+    <p>Air pollution is one of the most serious environmental issues of our time. With the rapid increase in vehicle emissions, industrial smoke, dust, and other airborne contaminants, the air in many urban areas has become unhealthy to breathe. This pollution can cause a wide range of health problems such as asthma, allergies, lung infections, heart diseases, and even reduce life expectancy. According to global health studies, polluted air is responsible for millions of deaths each year and severely affects the quality of life for billions of people.</p>
+    <p>To respond to this global challenge, our project introduces a simple but effective concept called the <span class="highlight-bubble">Personal Air Bubble</span> — a compact and portable system that creates a zone of clean, breathable air around a person, shielding them from surrounding pollution.</p>
+
+    <h2>Project Concept: What Is the <span class="highlight-bubble">Personal Air Bubble</span>?</h2>
+    <p>The <span class="highlight-bubble">Personal Air Bubble</span> is a science model designed to represent an individual’s protective air space that remains clean and safe no matter how polluted the outside air is. The idea is to create a dome of filtered air around a person by pulling in dirty air from outside, filtering it, and then releasing the purified air inside a closed space — the “bubble.” It’s a personalized air-cleaning zone.</p>
+    <p>Unlike full-room air purifiers that clean a large space, this model focuses only on the immediate breathing area. This concept is useful not only because it is energy-efficient and portable, but also because it can be worn or carried in environments where the air is dangerous or unfit to breathe.</p>
+
+    <h2>Design Approach: No Pipe, Direct Fan Integration</h2>
+    <p>In our revised model design, we made the system more compact and realistic by removing extra parts like the connecting straw or tube. Instead, we cut a hole directly into the plastic dome and placed a mini fan over the hole, with a layer of carbon paper acting as a filter between the fan and the outside air.</p>
+    <p>This setup has several advantages:</p>
+    <ul>
+      <li>It reduces complexity and makes the airflow process more visible and understandable.</li>
+      <li>The fan now pushes air directly into the dome through the hole, delivering fresh, filtered air straight to the person inside.</li>
+      <li>The carbon paper blocks harmful dust and particles, while the fan ensures steady air circulation inside the bubble.</li>
+    </ul>
+    <p>This setup more closely resembles how future wearable air systems might work in real life.</p>
+
+    <h2>How the Model Works – Step-by-Step Air Journey</h2>
+    <ol>
+      <li><strong>Polluted Air Intake:</strong> The fan is mounted on the outside of the clear dome. It faces outward and pulls in air from the environment, which may contain dust, smoke, pollen, or chemical particles.</li>
+      <li><strong>Filtering Stage:</strong> Behind the fan, we place a carbon filter. As air is sucked in by the fan, it first passes through this filter layer, which removes most of the harmful pollutants.</li>
+      <li><strong>Clean Air Delivery:</strong> Once filtered, the clean air is pushed by the fan directly into the dome. The result is a protective space filled with breathable air that is isolated from the polluted environment outside.</li>
+      <li><strong>Closed Clean Zone:</strong> The dome acts like a shield or helmet — trapping and maintaining the clean air around the person. It shows how a person could move around in polluted areas without being affected by toxic air.</li>
+    </ol>
+    <p>We used arrows and labeled signs in the model to visually demonstrate the movement of air from polluted → filtered → clean within the <span class="highlight-bubble">air bubble</span>.</p>
+
+    <h2>Materials Used in the Model</h2>
+    <p>To create the <span class="highlight-bubble">Personal Air Bubble</span>, we used the following simple and affordable materials:</p>
+    <ul>
+      <li>Transparent plastic bowl or dome – represents the personal air bubble.</li>
+      <li>Miniature human figure or toy – shows the person being protected inside.</li>
+      <li>Mini USB/DC fan – drives the airflow system.</li>
+      <li>Carbon filter paper – acts as the air purification layer.</li>
+      <li>Cardboard base – provides a sturdy platform for placing all components.</li>
+      <li>Labels and arrows – explain airflow and parts for presentation purposes.</li>
+      <li>Glue, tape, scissors, cutter – tools for assembling the structure.</li>
+    </ul>
+
+    <h2>Educational and Practical Importance</h2>
+    <p>This model is not just a science fair exhibit — it carries real meaning and importance. It teaches students about the dangers of air pollution, the science behind air purification, and how simple technology can solve complex problems. More importantly, it shows how innovation and creativity can lead to solutions that improve human health and protect the environment.</p>
+    <p>In real-world applications, this idea could be turned into:</p>
+    <ul>
+      <li>Wearable air filters or helmets for city commuters</li>
+      <li>Portable clean-air shelters for asthma or allergy patients</li>
+      <li>Smart masks or air-purifying clothing</li>
+      <li>Healthcare equipment used in hospitals or high-infection zones</li>
+      <li>Military and disaster relief tools for harsh or contaminated environments</li>
+    </ul>
+
+    <h2>Benefits of Our Design</h2>
+    <ul>
+      <li>Simplified construction – no external tubes or extra parts.</li>
+      <li>Improved airflow – more direct and efficient.</li>
+      <li>More realistic – closer to how actual products might be built.</li>
+      <li>Better presentation – visually clearer for viewers and judges.</li>
+    </ul>
+
+    <h2>Conclusion: A Breath of Fresh Air</h2>
+    <p>In conclusion, the <span class="highlight-bubble">Personal Air Bubble</span> model is a creative, simple, and meaningful representation of how technology can protect human health in a polluted world. Our updated design makes it easier to build, demonstrate, and understand. The project encourages us to think about the future of personal safety, environmental responsibility, and innovation.</p>
+    <p>Clean air should not be a luxury — it’s a basic human right. Through this model, we aim to highlight the importance of breathing safe air and how even students can take part in designing solutions for a better world.</p>
+<h2>WATCH TO SEE T IN ACTION</h2>
+    <video controls style="display: block; margin: 20px auto; max-width: 90%; border-radius: 12px; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);">
+      <source src="final with sub.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
+    <h2>Credits</h2>
+    <p style="text-align: center; font-size: 1.05rem;">PROJECT BY [FARAH KHALED, FAWZIYA AHMED, JULIA JOEL, NOOR KHALED, SIDRA AZHAR, SAARA AKTHAR - Y9g3]</p>
+  </main>
+</body>
+</html>
